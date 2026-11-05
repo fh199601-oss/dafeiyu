@@ -4,7 +4,7 @@ const U = require('../extension/updates.js');
 function release(version = '0.5.30') {
   const base = 'https://github.com/' + U.REPOSITORY;
   return { tag_name: 'v' + version, html_url: base + '/releases/tag/v' + version, draft: false, prerelease: false,
-    assets: ['', '-macOS'].map(suffix => { const name = `大肥鱼-v${version}${suffix}.zip`; return { name, state: 'uploaded', browser_download_url: `${base}/releases/download/v${version}/${encodeURIComponent(name)}` }; }) };
+    assets: ['', '-macOS'].map(suffix => { const name = `dafeiyu-v${version}${suffix}.zip`; return { name, state: 'uploaded', browser_download_url: `${base}/releases/download/v${version}/${encodeURIComponent(name)}` }; }) };
 }
 function fixture() {
   let time = 1800000000000, calls = 0, reply = () => Response.json(release()); const rows = new Map(), requests = [];

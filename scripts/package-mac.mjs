@@ -10,7 +10,7 @@ const mac=files.filter(p=>p.startsWith('extension/')||p==='README.md'||p==='docs
 function run(cmd,args,input){return new Promise((resolve,reject)=>{const c=spawn(cmd,args,{stdio:['pipe','pipe','pipe']});let err='';c.stderr.on('data',d=>err+=d);c.stdout.resume();c.on('error',reject);c.on('exit',code=>code?reject(Error(cmd+' failed: '+err)):resolve());c.stdin.end(input);});}
 await fs.mkdir('dist',{recursive:true});const report=[];
 for(const[suffix,entries]of[['',files],['-macOS',mac]]){
- const archive=path.resolve('dist',`大肥鱼-v${version}${suffix}.zip`);try{await fs.access(archive);throw Error('Archive already exists');}catch(e){if(e.code!=='ENOENT')throw e;}
+ const archive=path.resolve('dist',`dafeiyu-v${version}${suffix}.zip`);try{await fs.access(archive);throw Error('Archive already exists');}catch(e){if(e.code!=='ENOENT')throw e;}
  await run('/usr/bin/zip',['-q','-6','-X',archive,'-@'],entries.sort().join('\n')+'\n');
  const bytes=await fs.readFile(archive);const verified=portableZip(bytes);
  // Mark UTF-8 names consistently in both ZIP records for Windows extraction.

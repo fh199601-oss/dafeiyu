@@ -29,7 +29,7 @@ try {
       if (f.status === 0) throw Error('offline');
       const base = 'https://github.com/' + TrenchUpdates.REPOSITORY;
       return Response.json({ tag_name: 'v' + f.version, html_url: `${base}/releases/tag/v${f.version}`, draft: false, prerelease: false,
-        assets: ['', '-macOS'].map(suffix => { const name = `大肥鱼-v${f.version}${suffix}.zip`; return { name, state: 'uploaded', browser_download_url: `${base}/releases/download/v${f.version}/${encodeURIComponent(name)}` }; }) }, { status: f.status });
+        assets: ['', '-macOS'].map(suffix => { const name = `dafeiyu-v${f.version}${suffix}.zip`; return { name, state: 'uploaded', browser_download_url: `${base}/releases/download/v${f.version}/${encodeURIComponent(name)}` }; }) }, { status: f.status });
     };
   });
   const home = await context.newPage(); await home.goto(`chrome-extension://${id}/home.html`);

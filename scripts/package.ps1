@@ -1,7 +1,7 @@
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
 $manifest = Get-Content -Raw -Encoding UTF8 -LiteralPath (Join-Path $projectRoot 'extension\manifest.json') | ConvertFrom-Json
-$releaseName = '大肥鱼-v' + $manifest.version
+$releaseName = 'dafeiyu-v' + $manifest.version
 $dist = Join-Path $projectRoot 'dist'
 $release = Join-Path $dist $releaseName
 $archive = Join-Path $dist ($releaseName + '.zip')

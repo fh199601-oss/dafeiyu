@@ -149,7 +149,7 @@ async function handle(message, sender) {
     const asset = update.assets[platform] || update.assets.universal || null;
     if (message.type === 'updates:check') return { update: { ...update, platform, asset } };
     if (!update.available || !asset) throw new Error('暂无可下载的新版本，请到发布页查看');
-    if (!updateDownload) updateDownload = chrome.downloads.download({ url: asset.url, filename: '大肥鱼更新/' + asset.name, saveAs: true, conflictAction: 'uniquify' }).finally(() => { updateDownload = null; });
+    if (!updateDownload) updateDownload = chrome.downloads.download({ url: asset.url, filename: '大肥鱼更新/' + asset.name.replace(/^dafeiyu-/, '大肥鱼-'), saveAs: true, conflictAction: 'uniquify' }).finally(() => { updateDownload = null; });
     return { downloadId: await updateDownload };
   }
   if (message.type === 'state:get') return snapshot();

@@ -21,7 +21,7 @@
   function release(data) {
     const tag = data?.tag_name, version = typeof tag === 'string' ? tag.replace(/^v/, '') : '';
     if (!versionParts(version) || data.draft !== false || data.prerelease !== false || data.html_url !== BASE + '/releases/tag/' + tag) throw Error('发布信息不完整，请到发布页查看');
-    const names = { universal: `大肥鱼-v${version}.zip`, mac: `大肥鱼-v${version}-macOS.zip` };
+    const names = { universal: `dafeiyu-v${version}.zip`, mac: `dafeiyu-v${version}-macOS.zip` };
     const assets = {};
     for (const [platform, name] of Object.entries(names)) {
       const item = Array.isArray(data.assets) ? data.assets.find(a => a.name === name && a.state === 'uploaded') : null;

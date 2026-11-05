@@ -9,8 +9,8 @@
 
 检查更新使用 GitHub REST 的 `releases/latest`，只识别正式版本：
 
-- `大肥鱼-v版本号.zip`：Windows / macOS 通用包。
-- `大肥鱼-v版本号-macOS.zip`：Mac 包，包含 M / Intel 组件。
+- `dafeiyu-v版本号.zip`：Windows / macOS 通用包。
+- `dafeiyu-v版本号-macOS.zip`：Mac 包，包含 M / Intel 组件。
 - 发布 URL、标签、文件名须一致；插件拒绝其他仓库、域名或不匹配版本的下载链接。
 - GitHub 草稿和预发布版本不向普通用户提示更新。用户主动检查时读取，成功结果缓存 5 分钟。
 - 当前解压版不具备静默覆盖安装能力。用户下载后覆盖**原目录**，在扩展管理页重新加载，再刷新网页；不要删除原安装或更换加载路径。

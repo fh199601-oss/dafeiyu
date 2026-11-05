@@ -4,7 +4,7 @@
 
 ## 安装与检查更新
 
-- Windows 下载 Releases 中的 `大肥鱼-v版本号.zip`；Mac 下载 `大肥鱼-v版本号-macOS.zip`（M / Intel 共用）。源码页面的 Download ZIP 不含 AI 连接所需的运行组件，普通用户请下载 Releases 安装包。
+- Windows 下载 Releases 中的 `dafeiyu-v版本号.zip`；Mac 下载 `dafeiyu-v版本号-macOS.zip`（M / Intel 共用）。源码页面的 Download ZIP 不含 AI 连接所需的运行组件，普通用户请下载 Releases 安装包。
 - 初次安装：解压并保留文件夹，在 Chrome / Edge 扩展管理页开启开发者模式，加载其中的 `extension` 文件夹。
 - 已安装用户：点击插件面板左下方或小屋右上角版本号旁的“检查更新”。发现新版后可直接下载对应系统的安装包、查看发布说明。
 - **当前解压版需要将新版覆盖到原安装目录，再在扩展管理页重新加载、刷新网页。不要卸载重装，也不要另选一个新版目录加载，以免扩展 ID 改变、原设置不可用。** 仅下载不会自动安装。Chrome 对普通 Windows / macOS 自托管扩展的更新有限制，详见 [Chrome 官方分发说明](https://developer.chrome.com/docs/extensions/how-to/distribute)。
@@ -20,7 +20,7 @@
 
 v0.5.29 增加 GitHub 检查更新入口，支持版本比较、Win/Mac 安装包选择、下载、网络异常提示和五分钟缓存。下载地址仅接受本项目正式 Release 中匹配版本的安装包；不会加载或执行远程脚本。
 
-v0.5.28 将产品名统一为“大肥鱼”：扩展名称、工具栏面板、小屋、无障碍标签、提示文字、连接说明、安装器和新建连接例程均已更新。新的发行包命名为 `大肥鱼-v版本号.zip`（Win / Mac 通用）和 `大肥鱼-v版本号-macOS.zip`。原人物、图标、账户配置、钱包名单和已有 Bot 配对保留；已有用户覆盖原目录后重新加载扩展即可，不要卸载后重装。内部存储、加密标识和已安装目录维持兼容，避免改名造成设置丢失。
+v0.5.28 将产品名统一为“大肥鱼”：扩展名称、工具栏面板、小屋、无障碍标签、提示文字、连接说明、安装器和新建连接例程均已更新。新的发行包命名为 `dafeiyu-v版本号.zip`（Win / Mac 通用）和 `dafeiyu-v版本号-macOS.zip`。原人物、图标、账户配置、钱包名单和已有 Bot 配对保留；已有用户覆盖原目录后重新加载扩展即可，不要卸载后重装。内部存储、加密标识和已安装目录维持兼容，避免改名造成设置丢失。
 
 可以加载到 Windows / macOS 的 Chrome / Edge 123 或更新版本。v0.5.0 修复研究完成通知丢失、后台网页账户查询卡住的问题，重整小屋与工具栏面板，优化 GMGN 请求调度、原图手部动作和随机话术。保留已有配对、设置、原人物素材和单击音效。连接组件覆盖 Mac 的 Apple Silicon 与 Intel；浏览器部分共用跨平台代码。**Windows 流程已回归；Mac 原生安装、系统授权和 Grok Bot 面板配对尚待真机验收，当前是 Mac 试用包。**
 
@@ -103,7 +103,7 @@ v0.5.10 修复绘图资源未释放造成的 WebGL 上下文数量警告：同�
 
 相关说明：[Chrome Native Messaging](https://developer.chrome.com/docs/extensions/develop/concepts/native-messaging)、[Grok Bot 例程](https://docs.x.ai/grok-bot/skills-routines-and-automations)、[Cloudflare Quick Tunnels](https://developers.cloudflare.com/tunnel/get-started/quick-tunnels/)。随包附 Node.js 与 cloudflared 许可证及二进制校验值。
 
-Mac 系统要求与授权参考：[Node.js 平台要求](https://github.com/nodejs/node/blob/v24.13.0/BUILDING.md)、[Apple 辅助功能授权](https://support.apple.com/guide/mac-help/allow-accessibility-apps-to-access-your-mac-mh43185/mac)。Mac 使用 `大肥鱼-v0.5.29-macOS.zip`，内含 M / Intel 两套运行组件并自动选择；通用 ZIP 同时包含 Windows 组件。设置页准备的 Mac 安装 ZIP 中只有一个带可执行权限的 `.command`，不要从聊天应用逐个传脚本，以免丢失权限。
+Mac 系统要求与授权参考：[Node.js 平台要求](https://github.com/nodejs/node/blob/v24.13.0/BUILDING.md)、[Apple 辅助功能授权](https://support.apple.com/guide/mac-help/allow-accessibility-apps-to-access-your-mac-mh43185/mac)。Mac 使用 `dafeiyu-v0.5.29-macOS.zip`，内含 M / Intel 两套运行组件并自动选择；通用 ZIP 同时包含 Windows 组件。设置页准备的 Mac 安装 ZIP 中只有一个带可执行权限的 `.command`，不要从聊天应用逐个传脚本，以免丢失权限。
 
 安装入口通过 [Chrome Downloads API](https://developer.chrome.com/docs/extensions/reference/api/downloads#method-open) 工作：先保存，再由用户点击运行，浏览器不允许下载完成后自行运行。仅恢复和打开本扩展准备的安装文件；定位只读取当前扩展的浏览器安装记录，不读取钱包文件或网页登录资料。已有配对和账户设置保留。若旧版设置页没有安装按钮，请在扩展管理页重新加载插件，并刷新小屋和 X。
 
