@@ -1,0 +1,26 @@
+.check-updates{display:inline-flex;align-items:center;gap:5px;border:0;background:transparent;color:#356eb4;font:inherit;font-size:11px;line-height:20px;padding:2px 0;white-space:nowrap;cursor:pointer;border-radius:4px}
+.check-updates:hover{color:#245894;text-decoration:underline;text-underline-offset:3px;background:transparent}
+.check-updates:disabled{opacity:.6;cursor:wait}
+.check-updates:focus-visible{outline:2px solid #5279b8;outline-offset:3px}
+.topbar-actions{display:flex;align-items:center;justify-content:flex-end;gap:14px;flex-shrink:0}
+.update-dialog{box-sizing:border-box;width:380px;max-width:calc(100vw - 24px);max-height:calc(100vh - 24px);margin:auto;padding:22px;border:1px solid #dce5f2;border-radius:16px;color:#253c60;background:#f8faff;box-shadow:0 16px 48px #152d5a26;font-family:inherit;overflow:auto}
+.update-dialog::backdrop{background:#1b2c4b45}
+.update-dialog h2{font-size:17px;line-height:1.4;margin:0 28px 6px 0;letter-spacing:0}
+.update-dialog p{margin:0;font-size:12px;line-height:1.6}
+.update-dialog .update-current{color:#7a8ba4;font-size:11px}
+.update-dialog .update-status{margin:16px 0 7px;font-weight:600;font-size:14px;overflow-wrap:anywhere}
+.update-dialog .update-status.error{color:#b44159;font-size:12px}
+.update-dialog .update-hint{color:#71839d;font-size:11px}
+.update-dialog .update-close{position:absolute;right:13px;top:11px;border:0;background:transparent;color:#7a8ba4;font-size:24px;line-height:24px;padding:3px 7px;cursor:pointer;border-radius:6px;min-height:0}
+.update-dialog .update-close:hover{background:#eaf0f9}
+.update-actions{display:flex;align-items:center;gap:14px;margin-top:19px;flex-wrap:wrap}
+.update-actions a{color:#356eb4;text-decoration:none;font-size:11px;line-height:20px}
+.update-actions a:hover{text-decoration:underline}
+.update-dialog .update-download{border:0;border-radius:8px;padding:9px 12px;background:#5778b5;color:white;font:inherit;font-size:12px;cursor:pointer}
+.update-dialog .update-download:hover{background:#45669f}
+.update-dialog button:focus-visible,.update-dialog a:focus-visible{outline:2px solid #5279b8;outline-offset:3px}
+.update-dialog button:disabled{opacity:.6;cursor:wait}
+.update-dialog [hidden]{display:none!important}
+.popup-body .update-dialog{padding:18px;border-radius:13px}
+.popup-body .update-dialog .update-status{margin-top:12px}
+.popup-body .update-actions{margin-top:15px;gap:12px}

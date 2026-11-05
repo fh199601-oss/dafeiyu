@@ -1,0 +1,76 @@
+{
+  "manifest_version": 3,
+  "name": "大肥鱼",
+  "description": "大肥鱼陪伴、GMGN/币安只读小账本、Grok Bot 连接与 X 一键项目研究。",
+  "version": "0.5.29",
+  "icons": {
+    "16": "assets/icons/whale-16.png",
+    "32": "assets/icons/whale-32.png",
+    "48": "assets/icons/whale-48.png",
+    "128": "assets/icons/whale-128.png"
+  },
+  "minimum_chrome_version": "123",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "nativeMessaging",
+    "alarms",
+    "downloads",
+    "downloads.open"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "叫醒大肥鱼",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "assets/icons/whale-16.png",
+      "32": "assets/icons/whale-32.png",
+      "48": "assets/icons/whale-48.png",
+      "128": "assets/icons/whale-128.png"
+    }
+  },
+  "options_page": "home.html",
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+      "js": [
+        "core.js",
+        "sprite.js",
+        "original-mesh.js",
+        "click-audio.js",
+        "motion.js",
+        "rig.js",
+        "finance-core.js",
+        "x-research.js",
+        "pet.js"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "assets/whale-poses.png",
+        "pet.css"
+      ],
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; base-uri 'none'"
+  }
+}

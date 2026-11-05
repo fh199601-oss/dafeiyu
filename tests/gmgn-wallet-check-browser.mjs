@@ -1,0 +1,66 @@
+import {chromium,expect} from '@playwright/test';import fs from 'node:fs/promises';import path from 'node:path';
+const out=path.resolve('test-results/gmgn-wallet-check');await fs.mkdir(out,{recursive:true});
+const run=await fs.mkdtemp(path.join(out,'run-')),extension=path.join(run,'extension'),profile=path.join(run,'profile');await fs.cp('extension',extension,{recursive:true});
+const bridge=path.join(extension,'grok-connection.js');await fs.writeFile(bridge,(await fs.readFile(bridge,'utf8')).replaceAll('com.trenchwhale.grok','com.trenchwhale.wallet_check_unregistered'));
+const A='0x'+'12'.repeat(20),B='0x'+'34'.repeat(20),S='So11111111111111111111111111111111111111112',passes=[],errors=[];
+let context,worker,home,id,page;
+const pass=s=>{passes.push(s);console.log('PASS '+s);};
+async function launch(){
+ context=await chromium.launchPersistentContext(profile,{channel:'msedge',headless:true,viewport:{width:1280,height:900},ignoreDefaultArgs:['--disable-extensions'],args:[`--disable-extensions-except=${extension}`,`--load-extension=${extension}`]});
+ context.on('page',p=>p.on('pageerror',e=>errors.push(e.message)));
+ await context.route('https://gmgn.ai/**',r=>r.fulfill({contentType:'text/html',body:'<!doctype html><title>Own wallet list fixture</title><body style="background:#181c24">Wallet list fixture</body>'}));
+ worker=context.serviceWorkers()[0]||await context.waitForEvent('serviceworker');id=new URL(worker.url()).host;
+ await worker.evaluate(()=>{
+  globalThis.walletReads=0;globalThis.walletCalls=[];
+  const read=TrenchGmgnWalletSync.read;TrenchGmgnWalletSync.read=async(...args)=>{walletReads++;return read(...args);};
+  globalThis.fetch=async(input,init)=>{const u=new URL(input),body=init.body?JSON.parse(init.body):null;walletCalls.push({path:u.pathname,addresses:body?.wallet_addresses||[u.searchParams.get('wallet_address')]});
+   if(u.origin!=='https://openapi.gmgn.ai')throw Error('Unexpected API');
+   return Response.json({code:0,data:body?{list:body.wallet_addresses.map(wallet_address=>({wallet_address,realized_profit:'2'}))}:{balances:[{wallet_address:u.searchParams.get('wallet_address'),token_address:u.searchParams.get('token_address'),balance:'1'}]}});
+  };
+ });
+ home=await context.newPage();await home.goto(`chrome-extension://${id}/home.html#gmgn-settings`);
+ page=await context.newPage();await page.goto('https://gmgn.ai/?chain=bsc');await expect(page.locator('#trench-pet-root .hit')).toBeVisible();
+}
+const status=()=>home.evaluate(async()=>(await chrome.runtime.sendMessage({type:'gmgn:status'})).connection);
+const cache=async(addresses,owner='owner-one',extras={})=>page.evaluate(({addresses,owner,extras})=>localStorage.setItem('__multi_wallets_list_info__',JSON.stringify({bsc:{list:addresses.map(address=>({address,user_id:owner}))},...extras})),{addresses,owner,extras});
+const expire=()=>worker.evaluate(async()=>{const store=TrenchFinance.privateStore('trench-gmgn-connection');const check=await store.get('wallet-check');check.checkedAt-=3600000;check.nextCheckAt-=3600000;await store.set('wallet-check',check);});
+const click=async p=>{await p.bringToFront();await p.locator('#trench-pet-root .hit').click();};
+const balance=async(value,p=page)=>expect(p.locator('#trench-pet-root .bubble .finance-row').first()).toHaveText('BNB余额：'+value,{timeout:20000});
+try{
+ await launch();await home.evaluate(async()=>{await chrome.runtime.sendMessage({type:'settings:patch',patch:{interactionSound:false,energy:'quiet'}});});
+ await home.bringToFront();await home.locator('#gmgn-key').fill('fixture-wallet-check-only');await home.locator('#gmgn-save').click();
+ await expect(home.locator('#gmgn-badge')).toHaveText('待识别钱包');await expect(home.locator('#gmgn-key')).toHaveValue('');
+ expect((await status()).configured).toBe(true);expect((await status()).manualWallets).toBe(null);expect((await status()).walletCheck).toBe(null);
+ expect(await worker.evaluate(()=>walletReads)).toBe(0);expect(await worker.evaluate(()=>walletCalls.length)).toBe(0);
+ await home.reload();await expect(home.locator('#gmgn-badge')).toHaveText('待识别钱包');await expect(home.locator('#gmgn-addresses')).toHaveValue('');
+ pass('A new user saves only the API through the actual settings form; no wallet scan, API probe, or fake connection success occurs');
+ await home.locator('#gmgn-key').fill('fixture-wallet-check-second');await home.getByRole('button',{name:'保存并检测',exact:true}).click();
+ await expect(home.locator('#gmgn-feedback')).toContainText('尚未验证');expect((await status()).manualWallets).toBe(null);expect(await worker.evaluate(()=>walletCalls.length)).toBe(0);
+ await home.locator('#gmgn-addresses').fill('invalid-wallet');await home.locator('#gmgn-save').click();await expect(home.locator('#gmgn-inline-feedback')).toContainText('地址格式错误');
+ expect((await status()).manualWallets).toBe(null);await home.locator('#gmgn-addresses').fill('');
+ pass('Both save buttons support API-only first use while explicitly entered invalid addresses are still rejected');
+ await cache([B],'owner-one',{sol:{list:[{address:S,user_id:'owner-one'}]}});await page.waitForTimeout(150);expect(await worker.evaluate(()=>walletReads)).toBe(0);await click(page);await balance('1');
+ expect((await status()).manualWallets.chains.bsc.addresses).toEqual([B]);expect(await worker.evaluate(()=>walletReads)).toBe(1);
+ pass('First actual click discovers wallets and shows finance after API-only setup; loading or focusing a page does not scan');
+ await cache([A,B]);const peer=await context.newPage();await peer.goto('https://gmgn.ai/?chain=bsc');await click(peer);await balance('1',peer);await click(page);await balance('1');expect(await worker.evaluate(()=>walletReads)).toBe(1);
+ pass('Repeated clicks and a second GMGN tab share the one-hour wallet-list gate');
+ await expire();await page.waitForTimeout(150);expect(await worker.evaluate(()=>walletReads)).toBe(1);await click(page);await balance('2');expect((await status()).manualWallets.chains.bsc.addresses).toEqual([A,B]);expect(await worker.evaluate(()=>walletReads)).toBe(2);
+ pass('After the hour, only the next click checks; added wallets replace cached totals immediately');
+ await home.bringToFront();await home.evaluate(()=>window.dispatchEvent(new Event('focus')));await expect(home.locator('#gmgn-addresses')).toHaveValue(A+'\n'+B);
+ await home.locator('#gmgn-addresses').fill(A+'\n'+A);
+ await cache([B]);await expire();await click(page);await balance('1');expect((await status()).manualWallets.chains.bsc.addresses).toEqual([B]);
+ await home.bringToFront();await home.evaluate(()=>window.dispatchEvent(new Event('focus')));await expect(home.locator('#gmgn-addresses')).toHaveValue(A+'\n'+A);
+ pass('Deleting a wallet updates totals while the settings page preserves unsaved address edits');
+ await cache([A],'owner-two');await expire();await click(page);await balance('1');expect(Object.keys((await status()).manualWallets.chains)).toEqual(['bsc']);
+ pass('Switching GMGN account replaces its list and drops previous-owner chains');
+ await cache([],'owner-two',{sol:{list:[{address:S,user_id:'owner-two'}]}});await expire();await click(page);await balance('0');expect((await status()).manualWallets.chains.bsc.addresses).toEqual([]);
+ pass('An owner-confirmed empty chain clears its final wallet and cannot reuse old totals');
+ await page.evaluate(()=>localStorage.removeItem('__multi_wallets_list_info__'));await expire();await click(page);await balance('0');
+ expect((await status()).walletCheck.status).toBe('unavailable');await expect(page.locator('#trench-pet-root .bubble')).not.toContainText(/手动|填写.*地址|请.*设置/);
+ pass('Unavailable discovery preserves the saved list and does not show manual-setup instructions in the bubble');
+ await context.close();await launch();await cache([A]);await click(page);await balance('0');expect(await worker.evaluate(()=>walletReads)).toBe(0);
+ pass('Closing and reopening the browser does not reset the wallet-check interval');
+ await home.bringToFront();await expect(home.locator('#gmgn-wallet-sync-hint')).toContainText('1 小时');await expect(home.locator('#gmgn-wallet-sync-hint')).toContainText('手动');
+ await home.locator('#gmgn-settings').screenshot({path:path.join(out,'settings.png')});expect(errors).toEqual([]);
+ await fs.writeFile(path.join(out,'report.json'),JSON.stringify({passes,errors,fixtureOnly:true,realApi:false},null,2));
+}finally{await context?.close();}

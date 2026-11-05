@@ -1,0 +1,48 @@
+#!/bin/bash
+set -u
+set -o pipefail
+
+fail() {
+  printf '\n%s\n' "$1" >&2
+  if [ -t 0 ]; then read -r -p '按回车关闭…' reply; fi
+  exit 1
+}
+
+if [ "$(/usr/bin/uname -s)" != 'Darwin' ]; then
+  fail '这个安装器用于 Mac。请在大肥鱼小屋选择 Windows 安装器。'
+fi
+
+extension_id='__EXTENSION_ID__'
+case "$extension_id" in
+  ''|*[!a-p]*) fail '安装器标识无效，请回到大肥鱼小屋重新准备安装器。' ;;
+esac
+[ "${#extension_id}" -eq 32 ] || fail '安装器标识无效，请回到大肥鱼小屋重新准备安装器。'
+
+work_dir="$(/usr/bin/mktemp -d "${TMPDIR:-/tmp}/trench-whale-install.XXXXXX")" || fail '无法创建安装临时目录。'
+locator_file="$work_dir/locate.js"
+error_file="$work_dir/error.txt"
+cleanup() {
+  /bin/rm -f "$locator_file" "$error_file"
+  /bin/rmdir "$work_dir" 2>/dev/null || true
+}
+trap cleanup EXIT
+
+printf '%s' '__LOCATOR_BASE64__' | /usr/bin/base64 -D > "$locator_file" || fail '安装器内容不完整，请从大肥鱼小屋重新准备。'
+printf '%s\n' '正在定位当前浏览器的大肥鱼…'
+if ! package_root="$(/usr/bin/osascript -l JavaScript "$locator_file" "$extension_id" 2> "$error_file")"; then
+  /bin/cat "$error_file" >&2
+  fail '尚未安装连接组件。请按上方提示处理后重试。'
+fi
+case "$package_root" in
+  /*) ;;
+  *) fail '没有找到完整安装包，请回到大肥鱼小屋重新准备安装器。' ;;
+esac
+installer="$package_root/一键安装AI连接组件-Mac.command"
+[ -f "$installer" ] && [ -f "$package_root/extension/manifest.json" ] && [ -f "$package_root/connector/install-mac.mjs" ] || fail '完整安装包的文件不齐，请重新解压后重试。'
+
+printf '%s\n' '已找到大肥鱼，正在运行连接组件安装器…'
+/bin/bash "$installer"
+installer_status=$?
+if [ "$installer_status" -ne 0 ]; then
+  fail '连接组件未安装完成。请查看上方原安装器的提示。'
+fi

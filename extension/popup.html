@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>大肥鱼</title><link rel="icon" type="image/png" sizes="32x32" href="assets/icons/whale-32.png"><link rel="stylesheet" href="popup.css"><link rel="stylesheet" href="updates.css"></head>
+<body class="popup-body">
+<header class="popup-header">
+  <img class="popup-logo" src="assets/icons/whale-128.png" alt="">
+  <div class="popup-heading"><strong>大肥鱼</strong><small id="companion-state">网页陪伴</small></div>
+  <input type="checkbox" id="enabled" role="switch" aria-label="网页陪伴" disabled>
+</header>
+<main>
+  <label class="popup-size" for="size"><span>大肥鱼大小</span><input id="size" type="range" min="100" max="280" step="5" disabled><output id="size-output" for="size">180 px</output></label>
+  <div class="popup-secondary"><button id="reset-position" disabled>回到右下角</button><button id="toggle-site" disabled>本站不打扰</button></div>
+  <nav class="popup-links" aria-label="快捷设置">
+    <button id="open-click-settings" class="popup-open"><span><strong>单击与账户</strong><small>GMGN · 币安</small></span><span aria-hidden="true">↗</span></button>
+    <button id="open-grok-settings" class="popup-open"><span><strong>AI 连接</strong><small>Bot 与研究任务</small></span><span aria-hidden="true">↗</span></button>
+  </nav>
+  <button id="open-home" class="primary popup-open">打开宠物小屋 <span aria-hidden="true">↗</span></button>
+</main>
+<footer><div class="popup-footer-left"><p id="popup-status" class="popup-status" role="status">设置自动保存</p><button type="button" id="check-updates" class="check-updates"><span aria-hidden="true">↻</span> 检查更新</button></div><div class="popup-meta"><span class="popup-version">0.5.29</span><a class="author-link" href="https://x.com/shangshuss" target="_blank" rel="noopener noreferrer" aria-label="作者：恶霸的 X 主页（新标签页）"><span>作者：</span><svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" focusable="false"><path fill="currentColor" d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.64 7.584H.47l8.6-9.835L0 1.154h7.594l5.243 6.932 6.064-6.933zm-1.29 19.495h2.039L6.487 3.24H4.3L17.611 20.648z"/></svg><span>恶霸</span></a></div></footer>
+<script src="core.js"></script><script src="popup.js"></script><script src="updates.js"></script><script src="updates-ui.js"></script></body></html>

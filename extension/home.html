@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>大肥鱼的小屋</title><link rel="icon" type="image/png" sizes="32x32" href="assets/icons/whale-32.png"><link rel="stylesheet" href="ui.css"><link rel="stylesheet" href="updates.css"></head>
+<body class="home-body">
+<a class="skip-link" href="#main-content">跳到主要内容</a>
+<aside class="sidebar">
+<a class="brand" href="#room" aria-label="大肥鱼，回到小屋"><img class="brand-mark" src="assets/icons/whale-128.png" alt=""><span>大肥鱼<small>浏览器陪伴</small></span></a>
+<div class="sidebar-caption">陪伴，每一天</div>
+<nav aria-label="小屋导航">
+<button data-tab="room" class="nav-item active" aria-current="page"><span aria-hidden="true">⌂</span>宠物小屋</button>
+<button data-tab="actions" class="nav-item"><span aria-hidden="true">✧</span>动作图鉴 <em>12</em></button>
+<button data-tab="finance" class="nav-item"><span aria-hidden="true">◎</span>账户数据</button>
+<button data-tab="ai" class="nav-item"><span aria-hidden="true">✦</span>AI 连接与任务</button>
+<button data-tab="settings" class="nav-item"><span aria-hidden="true">⚙</span>陪伴设置</button>
+<button data-tab="watch" class="nav-item"><span aria-hidden="true">▤</span>关注名单</button>
+</nav>
+<div class="sidebar-bottom"><div><span class="status-dot"></span>陪伴已就绪</div><p>v0.5.29 · 一只大肥鱼，一点小陪伴</p><button id="show-install" data-tab="install" class="nav-item">安装与使用 <span aria-hidden="true">↗</span></button></div>
+<a class="author-link sidebar-author" href="https://x.com/shangshuss" target="_blank" rel="noopener noreferrer" aria-label="作者：恶霸的 X 主页（新标签页）"><span>作者：</span><svg viewBox="0 0 24 24" width="12" height="12" aria-hidden="true" focusable="false"><path fill="currentColor" d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.64 7.584H.47l8.6-9.835L0 1.154h7.594l5.243 6.932 6.064-6.933zm-1.29 19.495h2.039L6.487 3.24H4.3L17.611 20.648z"/></svg><span>恶霸</span></a>
+</aside>
+<main id="main-content" tabindex="-1">
+<header class="topbar"><span id="breadcrumb">宠物小屋</span><div class="topbar-actions"><span class="version-pill" id="version-label">大肥鱼 <b>0.5.29</b></span><button type="button" id="check-updates" class="check-updates"><span aria-hidden="true">↻</span> 检查更新</button></div></header>
+<section id="tab-room" class="tab-panel">
+      <div class="page-heading"><div class="eyebrow">A LITTLE COMPANY, EVERY DAY</div><h1>大肥鱼，随时都在。</h1><p>看行情、刷帖子，或是安静歇一会儿。今天也一起。</p></div>
+      <div class="room-layout">
+        <div class="room-card">
+          <div class="room-card-top"><span><i class="status-dot"></i> 大肥鱼在这里</span><span id="pose-badge">待机晃尾</span></div>
+          <div id="pet-stage" class="pet-stage"><div class="stage-orbit orbit-one"></div><div class="stage-orbit orbit-two"></div><span class="stage-star star-one">✦</span><span class="stage-star star-two">✧</span><div class="stage-ground"></div><p class="stage-whisper">在这里，慢半拍也没关系。</p></div>
+          <div class="stage-hint"><span>点她摸头</span><span>拖动搬家</span><span>右键找动作</span></div>
+        </div>
+        <div class="room-side">
+          <div class="intro-card"><span class="eyebrow">认识大肥鱼</span><h2>有点呆，有点黏你。</h2><p>平时安静陪着，开心时认真撒花。<br>累了，就一起休息一下。</p><label class="switch-row"><span>网页陪伴<small>在普通网页的角落出现</small></span><input type="checkbox" data-setting="enabled" role="switch"></label></div>
+          <div class="quick-card"><h3>陪她玩一会儿 <span>动作体验</span></h3><div class="quick-actions"><button data-play="pat">♡<span>摸摸头</span></button><button data-play="profit">✧<span>庆祝一下</span></button><button data-play="comfort">☁<span>抱抱情绪</span></button><button data-play="alert">!<span>有动静啦</span></button></div><p class="microcopy">这些按钮只播放动作，未连接真实交易。</p></div>
+          <button class="text-link" data-goto="actions">看看全部 12 种姿态 <span>→</span></button>
+        </div>
+      </div>
+      <div class="room-destinations"><button class="destination-card" data-goto="finance"><span class="destination-icon">◎</span><span><strong>我的小账本</strong><small>GMGN 与币安 · 只读账户数据</small></span><b aria-hidden="true">↗</b></button><button class="destination-card" data-goto="ai"><span class="destination-icon">✦</span><span><strong>我的 AI 助手</strong><small>连接 Bot，研究 X 上的项目</small></span><b aria-hidden="true">↗</b></button></div><div class="quiet-note"><span>☾</span><p><strong>让她按你的节奏陪伴。</strong>可以调小、静音、收进口袋，也可以让她在特定网站休息。</p><button data-goto="settings">调整偏好 →</button></div>
+    </section>
+<section id="tab-actions" class="tab-panel" hidden>
+      <div class="page-heading"><div class="eyebrow">HER LITTLE EXPRESSIONS</div><h1>每一种情绪，都有小动作。</h1><p>点一个姿态，在小舞台看她表演。当前均为动作体验。</p></div>
+      <div class="actions-bar"><span class="soft-tag">12 个动作 · 手脚一起动</span><label>体验场景 <select id="demo-chain"><option value="bsc">BSC</option><option value="solana">Solana</option></select></label><button id="stop-action" class="secondary">回到待机</button></div>
+      <div class="actions-layout"><div id="action-gallery" class="action-gallery"></div><aside class="gallery-preview-card"><span class="eyebrow">A LITTLE STAGE</span><h3>选一个动作，看看她。</h3><div id="gallery-stage" class="gallery-stage" aria-label="动作体验窗口"></div><p>也可以摸摸头，或拖动她的小短腿。</p></aside></div>
+    </section>
+<section id="tab-finance" class="tab-panel" hidden>
+<div class="page-heading"><div class="eyebrow">YOUR LITTLE ACCOUNT BOOK</div><h1>行情之外，看看自己的小账本。</h1><p>只读查询，把账户数据带到大肥鱼的小气泡里。</p></div>
+<div class="finance-toolbar"><div class="account-tabs" role="tablist" aria-label="选择账户来源"><button id="account-tab-gmgn" data-account="gmgn" role="tab" aria-selected="true" aria-controls="gmgn-settings">GMGN <small>链上钱包</small></button><button id="account-tab-binance" data-account="binance" role="tab" aria-selected="false" aria-controls="binance-settings">币安 <small>交易所账户</small></button></div><button class="text-link" data-goto="click-settings">设置单击显示内容 ↗</button></div>
+<div class="settings-card account-card" id="gmgn-settings" data-account-panel="gmgn" role="tabpanel" aria-labelledby="account-tab-gmgn">
+        <div class="gmgn-heading"><div><span class="eyebrow">GMGN</span><h3>钱包数据，集中看。</h3></div><span id="gmgn-badge" class="soft-tag">未配置</span></div>
+        <p>在这里管理 GMGN API Key 和钱包名单。大肥鱼会在单击查询时检查 GMGN 的钱包变化，按当前网络汇总余额与 1日已实现盈亏，无需开放交易权限。</p>
+        <div class="gmgn-layout"><form id="gmgn-form" autocomplete="off">
+          <label for="gmgn-key">GMGN API Key</label><div class="gmgn-key-field"><input id="gmgn-key" type="password" autocomplete="new-password" spellcheck="false" maxlength="1024" placeholder="粘贴你的 GMGN API Key"><button type="button" id="gmgn-reveal" aria-label="显示本次输入的 API Key" aria-pressed="false">显示</button></div>
+          <p class="microcopy" id="gmgn-key-hint">API Key 保存在这台浏览器的插件专属存储中，检测时只发送给 GMGN。</p>
+          <label for="gmgn-wallet-chain">填写哪个网络的钱包</label><select id="gmgn-wallet-chain"></select>
+          <label for="gmgn-addresses">钱包公开地址（首次可留空，每行一个）</label><textarea id="gmgn-addresses" rows="5" spellcheck="false" autocomplete="off" maxlength="12000" placeholder="首次可只保存 API，在已登录的 GMGN 页面单击大肥鱼尝试识别"></textarea>
+          <p class="microcopy" id="gmgn-address-hint">每条链最多 20 个地址，重复地址会自动合并。切换网络可分别填写，统一保存。</p>
+          <p class="important-note" id="gmgn-wallet-sync-hint">首次使用可只保存 API，再到已登录且钱包已加载的 GMGN 页面单击大肥鱼。钱包名单最多每 1 小时检查一次；识别到新增、删除或更换后同步更新。自动识别依赖网页已加载的名单，不能保证覆盖全部钱包。若无法完整识别，请在上方手动填写或修改地址并保存；未识别成功时会保留已保存名单。</p>
+          <label for="gmgn-default-chain">其他网页的默认网络</label><select id="gmgn-default-chain"></select>
+          <p class="microcopy">GMGN 网页跟随当前链；其他网页使用这里选择的默认网络。</p>
+          <div class="gmgn-buttons"><button type="submit" class="primary">保存并检测</button><button type="button" class="secondary" id="gmgn-save">仅保存</button><button type="button" class="secondary" id="gmgn-test">重新检测</button></div>
+          <p id="gmgn-inline-feedback" class="form-inline-feedback" aria-hidden="true"></p><details class="help-details"><summary>检测报告与其他操作</summary><label class="gmgn-download-option"><input id="gmgn-auto-report" type="checkbox"><span>检测后下载报告（不含 API Key）<small>报告含接口字段、公开钱包地址和金额，保存在浏览器下载目录，供下一步核对。</small></span></label>
+          <div class="gmgn-links"><a href="https://gmgn.ai/ai" target="_blank" rel="noopener noreferrer">创建 GMGN API Key ↗</a><button type="button" id="gmgn-export">导出检测报告</button><button type="button" id="gmgn-clear">清除 API</button></div>
+          </details><p class="important-note">只需读取权限。请勿填写私钥、助记词或 API 签名密钥。</p>
+        </form><div class="gmgn-result"><span class="eyebrow">CONNECTION STATUS</span><h4 id="gmgn-result-title">等待连接</h4><p id="gmgn-feedback" role="status" aria-live="polite">填写后点击“保存并检测”。</p><div id="gmgn-scope" class="gmgn-scope"></div><small id="gmgn-tested-at"></small><div class="gmgn-next"><strong>我的钱包 · 名单同步</strong><p id="gmgn-wallet-sync-status"></p><div class="gmgn-scope" id="gmgn-wallet-chains"></div><div class="gmgn-buttons"><button type="button" class="secondary" id="gmgn-finance-test">测试气泡数据</button><button type="button" class="secondary" data-click-site="gmgn">在 GMGN 显示数据</button></div><p>气泡最多两行：主币余额、1日已实现盈亏。余额黑色，盈利绿色，亏损红色。盈亏使用 API 的 1d 已实现字段，可能与主页 24h 汇总不同。</p><details class="help-details"><summary>数据更新与统计名单</summary><p>钱包名单检查与金额刷新分别限频：名单每 1 小时最多检查一次，到期后由下一次点击触发；金额沿用至少 60 秒的刷新间隔和 API 冷却时间。仅汇总当前名单，多钱包数据完整返回后才显示合计。</p></details></div></div></div>
+        
+      </div>
+<div class="settings-card account-card" id="binance-settings" data-account-panel="binance" role="tabpanel" aria-labelledby="account-tab-binance" hidden>
+        <div class="gmgn-heading"><div><span class="eyebrow">BINANCE</span><h3>账户动态，一眼知晓。</h3></div><span id="binance-badge" class="soft-tag">未配置</span></div>
+        <p>使用币安主站系统生成的 API Key 与 Secret Key，只开启读取权限。密钥只保存在插件专属存储中，请直接在此填写。</p>
+        <div class="binance-click-shortcuts"><strong id="binance-click-status" role="status"></strong><div class="gmgn-buttons"><button type="button" class="primary" data-click-site="binance">在币安显示数据</button><button type="button" class="secondary" data-click-mode="auto">按网站自动切换</button><button type="button" class="secondary" data-goto="click-settings">更多单击设置 →</button></div><p>点击“在币安显示数据”，再到币安网页点击大肥鱼即可测试；其他网站按各自规则显示。</p></div>
+        <label class="setting-block">币安气泡显示内容<select data-setting="binanceView" id="binance-view"><option value="daily-pnl">总资产 ＋ 今日总盈亏（默认，UTC 估算）</option><option value="spot-daily">总资产 ＋ 现货今日估算（UTC）</option><option value="assets-pnl">账户总资产估值 ＋ USDT 合约持仓浮盈</option><option value="assets">账户总资产估值 ＋ 其中现货估值</option><option value="futures">USDT 合约权益 ＋ 持仓浮盈</option></select></label>
+        <p class="important-note">今日盈亏按 UTC 0 点估算，实际范围随结果注明；不等同于币安官方全账户盈亏。</p><details class="help-details"><summary>哪些资金路径未计入估算？</summary><p>估算抵扣可查询的充值、提现及通用划转；理财申赎、法币直接出入金、子账户等非通用路径未覆盖，使用这些功能时可能有偏差。首次查询速度也受资金流水数量影响。</p></details>
+        <div class="gmgn-layout"><form id="binance-form" autocomplete="off">
+          <label for="binance-key">API Key</label><input id="binance-key" type="password" autocomplete="new-password" spellcheck="false" maxlength="256" placeholder="系统生成的 API Key">
+          <label for="binance-secret">Secret Key</label><input id="binance-secret" type="password" autocomplete="new-password" spellcheck="false" maxlength="256" placeholder="配套的 Secret Key">
+          <div class="gmgn-buttons"><button type="submit" class="primary">保存并检测币安</button><button type="button" id="binance-test" class="secondary">重新检测币安</button><button type="button" id="binance-clear" class="secondary">清除币安 API</button></div>
+          <p id="binance-inline-feedback" class="form-inline-feedback" aria-hidden="true"></p><div class="gmgn-links"><a href="https://www.binance.com/zh-CN/my/settings/api-management" target="_blank" rel="noopener noreferrer">打开币安 API 管理 ↗</a><a href="https://www.binance.com/en/support/faq/detail/360002502072" target="_blank" rel="noopener noreferrer">官方创建教程 ↗</a></div>
+        </form><div class="gmgn-result"><h4>连接状态</h4><p id="binance-feedback" role="status">填写后可检测账户读取权限。成功返回空资产列表显示 0，请求失败仍显示原因。</p><p id="binance-scope">账户估值汇总本 API 返回的钱包，以 USDT 计价；未返回的子账户不包含。今日估算与当前持仓浮盈是不同指标，查询后会注明实际统计范围。</p></div></div>
+        <details class="help-details"><summary>刷新方式与支持范围</summary><p>单击先显示带更新时间的已有结果，再发起新查询；重复请求会合并，失败或限频会提示。适用于 Binance.com，区域独立平台与统一保证金账户尚待验证。</p></details>
+      </div>
+</section>
+<section id="tab-ai" class="tab-panel" hidden><div class="page-heading"><div class="eyebrow">A LITTLE HELP FROM YOUR BOT</div><h1>让好奇心，有个去处。</h1><p>把选中的帖子交给你的 Bot，研究完成后回到这里或点击大肥鱼通知查看。</p></div><div class="settings-card gmgn-card" id="grok-settings">
+        <div class="gmgn-heading"><div><span class="eyebrow">GROK BOT</span><h3>把你的 Bot，带到大肥鱼身边。</h3></div><span class="soft-tag" id="grok-badge">检测组件中</span></div>
+        <p>在 X 看见想了解的项目，点一下大肥鱼交给 Grok Bot 研究；完成后点气泡，回到对应 Bot 看报告。</p>
+        <details id="grok-setup-details" class="grok-setup-details" open><summary>安装与连接指引 <span>Windows / macOS</span></summary><ol class="grok-steps"><li><strong>在这里准备并运行安装器。</strong>点击下方“准备安装器”，完成后直接运行；也可以打开专用安装位置。无需管理员、API Key 或端口设置。支持 Windows / macOS 的 Chrome 和 Edge。<span id="grok-os-hint"></span></li><li><strong>打开你要连接的 Grok Bot。</strong>点“生成配对话”，复制发送给它。连接器会短暂打开它的例程面板，自动完成配对。</li><li><strong>回到 X，按设定次数连点大肥鱼开始研究。</strong>首次点击报告链接时，浏览器可能请你允许打开 Grok Bot。</li></ol>
+        <div class="grok-installer"><h4>连接组件安装与修复</h4><div class="gmgn-buttons"><button type="button" class="primary" id="grok-install-prepare">准备安装器</button><button type="button" class="secondary" id="grok-install-open" disabled>运行安装器</button><button type="button" class="secondary" id="grok-install-folder" disabled>打开安装位置</button></div><p id="grok-install-feedback" role="status">安装器会放进专用目录，不用在原安装包里找文件。已有配对会保留。</p><p class="microcopy">浏览器或系统可能请你确认打开安装文件，请按提示操作。Windows 是单个 CMD 安装器；Mac 解压后是单个 COMMAND 安装器。请保留最初加载插件的完整文件夹。</p></div></details>
+        <div class="gmgn-buttons"><button class="secondary" id="grok-detect">检测连接</button><button class="primary" id="grok-pair" disabled>生成配对话</button><button class="secondary" id="grok-retry" hidden>继续连接</button><button class="secondary" id="grok-cancel" hidden>取消配对</button><button class="secondary" id="grok-disconnect" hidden>断开 Bot</button></div>
+        <label class="grok-check"><input id="grok-auto-x" type="checkbox" checked>配对完成后，自动开启 X 项目研究（其他网站沿用各自设置）</label>
+        <p id="grok-feedback" role="status" aria-live="polite">正在检测本机连接组件…</p>
+        <div id="grok-pair-box" hidden><label for="grok-prompt">把这句话发送给你选定的 Bot（20 分钟内有效）</label><textarea id="grok-prompt" rows="4" readonly spellcheck="false"></textarea><button class="primary" id="grok-copy">复制配对话</button></div>
+        <div class="gmgn-buttons"><button class="secondary" id="grok-enable-x" disabled>在 X 开启项目研究</button></div>
+        <label class="setting-block">发送研究需要连点几次<select id="grok-research-clicks" data-setting="xResearchClicks" aria-describedby="grok-click-help"><option value="1">1 次</option><option value="2">2 次</option><option value="3">3 次（默认）</option><option value="4">4 次</option><option value="5">5 次</option></select></label>
+        <p class="microcopy" id="grok-click-help">在 1.5 秒内完成所选次数才会发送研究，次数不足只摸摸头；超时从下一次点击重新计数。信息流中达标后，5 秒内选择帖子；随时按 Esc 退出。</p>
+        <p class="microcopy">只发送你选择的帖子正文、作者和链接。网页内容会交给你的 Bot 及其使用的服务；连接资料由系统加密保护（Windows 用户加密 / Mac 钥匙串加密）。请保持 Grok Bot 登录、电脑和浏览器在线。研究使用你的 Grok Bot 用量。</p>
+        <details class="help-details"><summary>连接方式、离线和断开说明</summary><p>试用版使用自动建立的临时网络通道，无需配置服务器，但不能保证持续在线。连接中断时可到 Bot 查看已发出的任务。断开连接不会删除 Bot 中的报告或例程。</p></details>
+        <div class="section-divider"><div><span class="eyebrow">YOUR RESEARCH</span><h4>最近研究</h4></div><span class="muted">报告保存在对应 Bot 中</span></div><p class="microcopy grok-notification-note">所有已开启大肥鱼的普通网页都会接收完成通知；后台网页保留未读，切回来时显示。在任一页面查看或关闭通知，其他页面也会同步已读。</p><p id="grok-empty">还没有研究任务。在 X 找到一个想了解的项目试试。</p><div id="grok-tasks"></div>
+      </div></section>
+<section id="tab-settings" class="tab-panel" hidden><div class="page-heading"><div class="eyebrow">MAKE YOURSELF AT HOME</div><h1>让陪伴，刚刚好。</h1><p>外观、声音和单击习惯，都按你的喜好来。修改会自动保存。</p></div>
+<div class="settings-card gmgn-card" id="click-settings">
+        <h3>单击显示内容</h3><p>默认按当前网站显示对应内容。若选择固定模式，所有网页都会显示同一类内容。</p>
+        <label class="setting-block">单击模式<select data-setting="clickMode" id="click-mode"><option value="auto">按当前网站自动切换（默认）</option><option value="gmgn">所有网站固定显示 GMGN 数据</option><option value="binance">所有网站固定显示币安数据</option><option value="companion">只摸摸头 · 普通陪伴</option></select></label>
+        <div class="form-grid" id="site-click-rules" hidden>
+          <label>在 GMGN<select data-setting="clickGmgn"><option value="gmgn">GMGN 数据</option><option value="binance">币安数据</option><option value="companion">普通陪伴</option></select></label>
+          <label>在币安主站<select data-setting="clickBinance"><option value="binance">币安数据</option><option value="gmgn">GMGN 数据</option><option value="companion">普通陪伴</option></select></label>
+          <label>在 X / Twitter<select data-setting="clickX"><option value="grok">项目研究 · Grok Bot</option><option value="companion">普通陪伴</option><option value="gmgn">GMGN 数据</option><option value="binance">币安数据</option></select></label>
+          <label>其他网站<select data-setting="clickOther"><option value="companion">普通陪伴</option><option value="gmgn">GMGN 数据</option><option value="binance">币安数据</option></select></label>
+        </div>
+        <div id="x-research-click-setting" hidden><label class="setting-block">发送研究需要连点几次<select id="x-research-clicks" data-setting="xResearchClicks" aria-describedby="x-research-click-help"><option value="1">1 次</option><option value="2">2 次</option><option value="3">3 次（默认）</option><option value="4">4 次</option><option value="5">5 次</option></select></label><p class="microcopy" id="x-research-click-help">1.5 秒内连点达到所选次数才发送，次数不足只摸摸头；超时从下一次点击重新计数。帖子详情直接研究，信息流中达标后，5 秒内选择帖子；随时按 Esc 退出。</p></div>
+        <p class="microcopy">项目研究需先在“AI 连接与任务”中连接 Grok Bot。连点次数设置在两处同步保存。</p>
+      </div>
+<div class="settings-layout"><div class="settings-card"><h3>外观与位置 <span class="help-tip"><button type="button" aria-label="位置保存说明" aria-describedby="position-help">i</button><span role="tooltip" id="position-help">拖动大肥鱼后会记住位置，窗口变小时自动移回可见区域。</span></span></h3><label class="range-row"><span>宠物大小 <b id="size-value">180 px</b></span><input type="range" min="100" max="280" step="5" data-setting="size"><small>小一点陪伴，大一点看清表情。</small></label><div class="setting-block"><span>初始位置</span><div class="segmented" id="position-buttons"><button data-position="left">左下角</button><button data-position="right">右下角</button><button data-position="reset">重置位置</button></div><small>也可以直接拖动宠物，位置会记住。</small></div><label class="switch-row"><span>网页陪伴<small>关闭后，普通网页上的宠物会隐藏</small></span><input type="checkbox" data-setting="enabled" role="switch"></label><label class="switch-row"><span>收进口袋<small>保留一个小鲸鱼按钮，点一下就回来</small></span><input type="checkbox" data-setting="collapsed" role="switch"></label></div>
+      <div class="settings-card"><h3>活泼程度与声音 <span class="help-tip"><button type="button" aria-label="后台动画说明" aria-describedby="motion-help">i</button><span role="tooltip" id="motion-help">隐藏的网页暂停连续动画，也会尊重系统的减少动态效果偏好。</span></span></h3><div class="setting-block"><label for="energy">日常活泼程度</label><select id="energy" data-setting="energy"><option value="quiet">安静陪伴 · 只呼吸和互动</option><option value="gentle">温柔陪伴 · 偶尔探头、打盹</option><option value="lively">活泼一点 · 更常做小动作</option></select></div><label class="switch-row"><span>单击音效<small>摸摸头时，轻轻“叽”一声</small></span><input type="checkbox" data-setting="interactionSound" role="switch"></label><label class="switch-row"><span>轻柔提示音<small>开启后先点一次网页里的宠物，启用声音</small></span><input type="checkbox" data-setting="sound" role="switch"></label><label class="switch-row"><span>减少动态效果<small>保留静态表情与对话，暂停连续动画</small></span><input type="checkbox" data-setting="reducedMotion" role="switch"></label></div></div>
+      <div class="settings-card sites-card"><h3>这些网站，让她休息</h3><p>添加域名后，宠物会在该网站及其子域名隐藏。</p><form id="site-form" class="inline-form"><input name="site" placeholder="例如：example.com" aria-label="不显示宠物的域名" required><button class="secondary">添加</button></form><div id="site-list" class="site-list"></div></div>
+</section>
+<section id="tab-watch" class="tab-panel" hidden>
+      <div class="page-heading"><div class="eyebrow">KEEP AN EYE ON YOUR WORLD</div><h1>想关注的，先替你记下来。</h1><p>BSC 与 Solana 分开保存，地址只留在这台浏览器里。</p></div>
+      <div class="connection-banner"><span class="connection-icon">◎</span><div><strong>地址备忘录 · 自动监控尚未开放</strong><p>这里保存的地址仅用于备忘，不会自动追踪交易。查询自己的钱包数据，请前往“账户数据”。</p></div><span class="soft-tag">仅本地保存</span></div>
+      <div class="chain-row"><div><span class="chain-icon bsc">B</span><strong>BNB Smart Chain</strong><span>公开地址</span></div><div><span class="chain-icon sol">S</span><strong>Solana</strong><span>公开地址</span></div></div>
+      <form id="wallet-form" class="wallet-form"><h3>添加一个地址</h3><div class="form-grid"><label>网络<select name="chain"><option value="bsc">BSC</option><option value="solana">Solana</option></select></label><label>用途<select name="kind"><option value="watch">关注地址</option><option value="self">我的钱包</option></select></label><label>给它起个名字<input name="label" maxlength="24" placeholder="例如：我盯的那只鲸鱼" autocomplete="off"></label></div><label>完整公开地址<input name="address" required spellcheck="false" autocomplete="off" placeholder="BSC：0x… / Solana：Base58 地址"></label><div class="form-bottom"><span>最多 30 个公开地址；不需要连接钱包。</span><button type="submit" class="primary">保存地址</button></div><p id="wallet-error" class="form-error" role="alert"></p></form>
+      <div class="list-heading"><h3>我的名单 <span id="wallet-count">0</span></h3><span>仅保存 · 尚未监控</span></div><div id="wallet-list"></div>
+    </section>
+<section id="tab-install" class="tab-panel" hidden><div class="page-heading"><div class="eyebrow">WELCOME ABOARD</div><h1>把她带进你的浏览器。</h1><p>加载一次，之后就可以在普通网页里见到她。</p></div><div class="settings-card install-card"><ol><li>打开 Chrome 扩展程序页：<code>chrome://extensions</code>。</li><li>开启右上角的“开发者模式”。</li><li>点击“加载已解压的扩展程序”，选择项目里的 <code>extension</code> 文件夹。</li><li>打开或刷新普通网页，大肥鱼会出现在右下角。把扩展固定到工具栏，随时调整设置。</li></ol><p>Chrome 设置页、扩展商店等受保护页面不支持宠物显示。升级后重新加载扩展，并刷新已打开的网页。</p><p>支持 Windows 与 macOS 的 Chrome / Edge。账户查询在“账户数据”中配置；AI 研究在“AI 连接与任务”中配对。地址自动监控与定时新闻尚未开放。</p><button data-goto="room" class="primary">回小屋摸摸头</button></div></section>
+<footer><span>一只小鲸鱼，一点小陪伴。 <button class="footer-help" data-goto="install">安装与使用 ↗</button></span><span>Windows & macOS · Chrome / Edge</span></footer>
+</main><div id="toast" class="toast" role="status" hidden></div>
+<script src="core.js"></script><script src="preview-bridge.js"></script><script src="sprite.js"></script><script src="original-mesh.js"></script><script src="click-audio.js"></script><script src="motion.js"></script><script src="rig.js"></script><script src="finance-core.js"></script><script src="pet.js"></script><script src="home.js"></script><script src="gmgn-settings.js"></script><script src="binance-settings.js"></script><script src="grok-settings.js"></script><script src="installer-kit.js"></script><script src="grok-installer.js"></script>
+<script src="updates.js"></script><script src="updates-ui.js"></script></body></html>
